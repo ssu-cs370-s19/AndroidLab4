@@ -2,6 +2,7 @@ package ssu.softwarednd.spring19.androidlab4.utility;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,7 +32,16 @@ public class RecipeParser {
             JSONObject response = new JSONObject(json);
 
             // todo: deserialize! json -> Java
+            JSONArray matches = response.getJSONArray("matches");
+            JSONObject first_match = matches.getJSONObject(0);
+            String recipeName = first_match.getString("recipeName");
+            int recipeRating = first_match.getInt("rating");
 
+            RecipeModel model = new RecipeModel();
+            model.setRecipeName(recipeName);
+            model.setRecipeRating(recipeRating);
+
+            modelList.add(model);
 
         } catch (JSONException e) {
             Log.e(TAG, "getMatches: error parsing JSON", e);

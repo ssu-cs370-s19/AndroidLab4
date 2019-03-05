@@ -3,17 +3,22 @@ package ssu.softwarednd.spring19.androidlab4.model;
 public class RecipeModel {
 
     private String recipeName;
-
+    private int recipeRating;
 
 
     public String getRecipeName() {
         return recipeName;
     }
-
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
 
+    public int getRecipeRating() {
+        return recipeRating;
+    }
+    public void setRecipeRating(int recipeRating) {
+        this.recipeRating = recipeRating;
+    }
 }
 
 // sample JSON object
