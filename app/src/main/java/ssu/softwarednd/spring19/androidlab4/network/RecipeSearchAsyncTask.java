@@ -27,6 +27,7 @@ A List that contains RecipeModels -> List<RecipeModel>
 
     public interface RecipeListener {
         // todo: define listener "contract" (function prototype)
+        void onClick (List<RecipeModel> recipeModels);
     }
 
     @Override
@@ -53,6 +54,7 @@ A List that contains RecipeModels -> List<RecipeModel>
     protected void onPostExecute(List<RecipeModel> recipeModels) {
         // happens after doInBackground, and runs on main thread
         super.onPostExecute(recipeModels);
+        listener.onClick(recipeModels);
 
         // todo: notify listener
     }
