@@ -38,12 +38,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Recipe Name!" />
+            tools:text="Recipe Name!"
+            android:id="@+id/Recipe_Name"
+
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Recipe Rating" />
+            tools:text="Recipe Rating"
+            android:id="@+id/Recipe_Rating"
+
+            />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

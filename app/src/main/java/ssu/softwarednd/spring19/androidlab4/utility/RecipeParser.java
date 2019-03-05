@@ -2,6 +2,7 @@ package ssu.softwarednd.spring19.androidlab4.utility;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,6 +19,7 @@ public class RecipeParser {
 
     /**
      * Returns a list of RecipeModels, representing recipes in the json
+     *
      * @param json String json representing the server's response
      * @return List of recipes (as RecipeModels)
      */
@@ -31,6 +33,22 @@ public class RecipeParser {
             JSONObject response = new JSONObject(json);
 
             // todo: deserialize! json -> Java
+
+            JSONArray matches = response.getJSONArray("matches");
+
+            JSONObject recipe = matches.getJSONObject(0);
+
+            String recipeName = recipe.getString("recipeName");
+
+
+            String recipeRating = recipe.getString("recipeRating");
+
+            RecipeModel model = new RecipeModel();
+
+            model.setRecipeName(recipeName);
+            model.setRecipeRating(recipeRating);
+
+            modelList.add(model);
 
 
         } catch (JSONException e) {
@@ -48,12 +66,11 @@ public class RecipeParser {
 
 // http://api.yummly.com/v1/api/recipes?_app_key=ec3e34e0bb6801670dbd3dbd02ce7608&_app_id=4911b643&q=lemon
 
-/* beginning of JSON Object (response from server)
+/* //beginning of JSON Object (response from server)
 
 {
   // totalMatchCount is an integer
   "totalMatchCount": 271173,
-
   // criteria is a (nested) JSON object
   "criteria": {
     // q is a string
@@ -61,7 +78,6 @@ public class RecipeParser {
     "allowedIngredient": null,
     "excludedIngredient": null
   },
-
   // matches is a JSON Array, containing JSON Objects
   "matches": [
     {
@@ -104,19 +120,35 @@ public class RecipeParser {
       },
       "rating": 4
     },
-
     // more json objects
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... }
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    },
+    {
+      ...
+    }
   ],
-
   "attribution": {
     "html": "Recipe search powered by <a href='http://www.yummly.co/recipes'><img alt='Yummly' src='https://static.yummly.co/api-logo.png'/></a>",
     "url": "http://www.yummly.co/recipes/",
