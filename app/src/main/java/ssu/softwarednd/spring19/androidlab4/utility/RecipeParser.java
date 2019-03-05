@@ -1,7 +1,9 @@
 package ssu.softwarednd.spring19.androidlab4.utility;
 
+import android.util.JsonToken;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +33,17 @@ public class RecipeParser {
             JSONObject response = new JSONObject(json);
 
             // todo: deserialize! json -> Java
+            JSONArray matchesarray = response.getJSONArray("matches");
+            JSONObject firstMatch = matchesarray.getJSONObject(0);
+            String recipeName = firstMatch.getString("recipeName");
+            int rating = firstMatch.getInt("rating");
+
+            RecipeModel recipe = new RecipeModel();
+            recipe.setRecipeName(recipeName);
+            recipe.setRating(rating);
+
+            modelList.add(recipe);
+
 
 
         } catch (JSONException e) {
@@ -48,7 +61,7 @@ public class RecipeParser {
 
 // http://api.yummly.com/v1/api/recipes?_app_key=ec3e34e0bb6801670dbd3dbd02ce7608&_app_id=4911b643&q=lemon
 
-/* beginning of JSON Object (response from server)
+/* //beginning of JSON Object (response from server)
 
 {
   // totalMatchCount is an integer
@@ -106,15 +119,15 @@ public class RecipeParser {
     },
 
     // more json objects
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... },
-    { ... }
+    //{ ... },
+    //{ ... },
+    //{ ... },
+    //{ ... },
+    //{ ... },
+    //{ ... },
+    //{ ... },
+    //{ ... },
+    //{ ... }
   ],
 
   "attribution": {
