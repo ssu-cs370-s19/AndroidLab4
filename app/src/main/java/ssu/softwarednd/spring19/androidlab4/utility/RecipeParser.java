@@ -2,8 +2,10 @@ package ssu.softwarednd.spring19.androidlab4.utility;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,19 @@ public class RecipeParser {
 
             // todo: deserialize! json -> Java
 
+            JSONArray matches = response.getJSONArray("matches");
 
+            JSONObject recipe = matches.getJSONObject(0);
+
+            String recipeName = recipe.getString("recipeName");
+
+            int rating = recipe.getInt("rating");
+
+            RecipeModel model = new RecipeModel();
+            model.setRecipeName(recipeName);
+            model.setRating(rating);
+
+            modelList.add(model);
         } catch (JSONException e) {
             Log.e(TAG, "getMatches: error parsing JSON", e);
         }
@@ -51,18 +65,18 @@ public class RecipeParser {
 /* beginning of JSON Object (response from server)
 
 {
-  // totalMatchCount is an integer
+    // totalMatchCount is an integer
   "totalMatchCount": 271173,
 
-  // criteria is a (nested) JSON object
+    // criteria is a (nested) JSON object
   "criteria": {
-    // q is a string
+        // q is a string
     "q": "lemon",
     "allowedIngredient": null,
     "excludedIngredient": null
   },
 
-  // matches is a JSON Array, containing JSON Objects
+    // matches is a JSON Array, containing JSON Objects
   "matches": [
     {
       "imageUrlsBySize": {
