@@ -4,7 +4,9 @@ public class RecipeModel {
 
     private String recipeName;
 
+    private int rating;
 
+    /*********************************/
 
     public String getRecipeName() {
         return recipeName;
@@ -12,6 +14,14 @@ public class RecipeModel {
 
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
 }
