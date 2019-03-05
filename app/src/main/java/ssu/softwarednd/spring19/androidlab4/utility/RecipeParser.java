@@ -2,6 +2,7 @@ package ssu.softwarednd.spring19.androidlab4.utility;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +32,10 @@ public class RecipeParser {
             JSONObject response = new JSONObject(json);
 
             // todo: deserialize! json -> Java
+
+            JSONArray recipeList = response.getJSONArray("recipeList");
+            JSONObject recipe = recipeList.getJSONObject(0);
+
 
 
         } catch (JSONException e) {
