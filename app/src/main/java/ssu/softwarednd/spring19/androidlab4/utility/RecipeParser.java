@@ -23,26 +23,31 @@ public class RecipeParser {
      */
     public static List<RecipeModel> getMatches(String json) {
 
-
         List<RecipeModel> modelList = new ArrayList<>();
-
 
         try {
             JSONObject response = new JSONObject(json);
+            RecipeModel recipe = new RecipeModel();
 
             // todo: deserialize! json -> Java
+            JSONArray matches = response.getJSONArray("matches");
+            JSONObject firstMatch = matches.getJSONObject(0);
+
+            recipe.setRecipeName(firstMatch.getString("recipeName"));
+            recipe.setRating(firstMatch.getInt("rating"));
+
+            modelList.add(model);
+
 
 
         } catch (JSONException e) {
             Log.e(TAG, "getMatches: error parsing JSON", e);
         }
 
-
         return modelList;
     }
 
 }
-
 
 // sample request/response
 
