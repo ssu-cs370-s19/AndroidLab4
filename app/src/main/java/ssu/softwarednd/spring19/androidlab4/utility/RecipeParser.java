@@ -2,6 +2,7 @@ package ssu.softwarednd.spring19.androidlab4.utility;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +31,21 @@ public class RecipeParser {
         try {
             JSONObject response = new JSONObject(json);
 
-            // todo: deserialize! json -> Java
+            JSONArray matches= response.getJSONArray("matches");
+            
+            JSONObject match= matches.getJSONObject(0);
+            
+            String recipeName = match.getString("recipeName");
+            
+            int rating= match.getInt("rating");
+            
+            RecipeModel recipe = new RecipeModel();
+            
+            recipe.setRating(rating);
+            
+            recipe.setRecipeName(recipeName);
+            
+            modelList.add(recipe);
 
 
         } catch (JSONException e) {
