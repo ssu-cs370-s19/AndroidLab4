@@ -3,7 +3,7 @@ package ssu.softwarednd.spring19.androidlab4.model;
 public class RecipeModel {
 
     private String recipeName;
-
+    private int rating;
 
 
     public String getRecipeName() {
@@ -14,6 +14,13 @@ public class RecipeModel {
         this.recipeName = recipeName;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 }
 
 // sample JSON object
