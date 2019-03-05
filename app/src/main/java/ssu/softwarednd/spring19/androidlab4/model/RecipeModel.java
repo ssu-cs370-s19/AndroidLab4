@@ -1,9 +1,17 @@
 package ssu.softwarednd.spring19.androidlab4.model;
 
 public class RecipeModel {
-
     private String recipeName;
+    private int rating;
 
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public float getRating() {
+        return rating;
+    }
 
 
     public String getRecipeName() {
