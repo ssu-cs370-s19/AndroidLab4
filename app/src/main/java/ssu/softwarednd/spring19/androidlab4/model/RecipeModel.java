@@ -4,6 +4,8 @@ public class RecipeModel {
 
     private String recipeName;
 
+    private String recipeRating;
+
 
 
     public String getRecipeName() {
@@ -14,7 +16,15 @@ public class RecipeModel {
         this.recipeName = recipeName;
     }
 
-}
+    public String getRecipeRating () {
+        return recipeRating;
+    }
+
+    public void setRecipeRating(String recipeRating) { this.recipeRating = recipeRating; }
+
+
+    }
+
 
 // sample JSON object
 /*

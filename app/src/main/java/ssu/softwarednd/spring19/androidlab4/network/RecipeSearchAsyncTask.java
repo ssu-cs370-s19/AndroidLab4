@@ -25,8 +25,12 @@ A List that contains RecipeModels -> List<RecipeModel>
 
     private RecipeListener listener;
 
+
+    }
+
     public interface RecipeListener {
         // todo: define listener "contract" (function prototype)
+        void contract (List<RecipeListener>);
     }
 
     @Override
@@ -42,6 +46,8 @@ A List that contains RecipeModels -> List<RecipeModel>
         if (responseJson != null) {
             List<RecipeModel> models = RecipeParser.getMatches(responseJson);
             return models;
+
+
         }
 
         // no success :(
@@ -54,7 +60,11 @@ A List that contains RecipeModels -> List<RecipeModel>
         // happens after doInBackground, and runs on main thread
         super.onPostExecute(recipeModels);
 
+
         // todo: notify listener
+        void contract (recipeModels) {
+            return RecipeModel;
+        }
     }
 
 
